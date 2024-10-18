@@ -10,6 +10,7 @@ public class CraneSequenceController : MonoBehaviour
     public Transform cable;
     public Transform nearLimit;
     public Transform farLimit;
+    public TrolleyController trolleyController;
     public float rotationSpeed = 20f;
     public float trolleySpeed = 10f;
     public float hookSpeed = 1f;
@@ -78,14 +79,39 @@ public class CraneSequenceController : MonoBehaviour
 
     IEnumerator MoveTrolley()
     {
-        Vector3 targetPosition = new Vector3(concrete.position.x, trolley.position.y, trolley.position.z);
+        //current position of trolley along limits
+        Vector3 currentTrolleyPositionXZ = new Vector3(trolley.position.x, 0, trolley.position.z);
 
-        while (Vector3.Distance(trolley.position, targetPosition) > 0.1f)
+        //concrete position projected onto XZ plane
+        Vector3 concretePositionXZ = new Vector3(concrete.position.x, 0, concrete.position.z);
+
+        //trolley near and far limits projected onto XZ plane
+        Vector3 nearLimitPositionXZ = new Vector3(trolleyController.trolleyNearLimit.position.x, 0, trolleyController.trolleyNearLimit.position.z);
+        Vector3 farLimitPositionXZ = new Vector3(trolleyController.trolleyFarLimit.position.x, 0, trolleyController.trolleyFarLimit.position.z);
+
+        //total distance between the near and far limits
+        float totalDistance = Vector3.Distance(nearLimitPositionXZ, farLimitPositionXZ);
+
+        //current normalized position of the trolley between near and far limits
+        float currentTrolleyNormalizedPosition = Vector3.Distance(nearLimitPositionXZ, currentTrolleyPositionXZ) / totalDistance;
+
+        //target normalized position for trolley based on concrete position
+        float targetTrolleyNormalizedPosition = Vector3.Distance(nearLimitPositionXZ, concretePositionXZ) / totalDistance;
+
+        //move trolley towards target normalized position
+        while (Mathf.Abs(currentTrolleyNormalizedPosition - targetTrolleyNormalizedPosition) > 0.01f)
         {
-            trolley.position = Vector3.MoveTowards(trolley.position, targetPosition, trolleySpeed * Time.deltaTime);
-            trolley.GetComponent<SoftParenting>().UpdateRelativePosition(trolley.position);
+            //update current normalized position towards target
+            currentTrolleyNormalizedPosition = Mathf.MoveTowards(currentTrolleyNormalizedPosition, targetTrolleyNormalizedPosition, trolleySpeed * Time.deltaTime / totalDistance);
+
+            //update trolley position using normalized position
+            trolleyController.MoveTrolley(currentTrolleyNormalizedPosition);
+
             yield return null;
         }
+
+        //ensure trolley isaligned with concrete
+        trolleyController.MoveTrolley(targetTrolleyNormalizedPosition);
     }
 
     IEnumerator LowerHook()

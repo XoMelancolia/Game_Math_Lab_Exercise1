@@ -4270,8 +4270,9 @@ MonoBehaviour:
   cable: {fileID: 8658184023392300798}
   nearLimit: {fileID: 601031390}
   farLimit: {fileID: 363527139}
-  rotationSpeed: 20.57
-  trolleySpeed: 10.04
+  trolleyController: {fileID: 8658184023395725024}
+  rotationSpeed: 20
+  trolleySpeed: 10
   hookSpeed: 1
   waitTime: 1
 --- !u!33 &8658184023395725020
