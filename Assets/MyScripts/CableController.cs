@@ -7,8 +7,8 @@ public class CableController : MonoBehaviour
 {
     public Slider cableSlider;     // reference to ui cable slider
 
-    private float minCableLength = 0.05f; // cable minimum scale
-    private float maxCableLength = 2.49f; // cable maximum scale
+    public float minCableLength = 0.05f; // cable minimum scale
+    public float maxCableLength = 2.49f; // cable maximum scale
 
     private void OnEnable()
     {
@@ -22,7 +22,7 @@ public class CableController : MonoBehaviour
         ScaleCable(value);
     }
 
-    private void ScaleCable(float t)
+    public void ScaleCable(float t)
     {
         // calculates cable length based on cable slider value
         float newCableLength = Mathf.Lerp(minCableLength, maxCableLength, t);

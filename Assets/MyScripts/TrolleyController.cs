@@ -22,7 +22,7 @@ public class TrolleyController : MonoBehaviour
         MoveTrolley(value);
     }
 
-    private void MoveTrolley(float t)
+    public void MoveTrolley(float t)
     {
         // changed trolley position
         Vector3 newPosition = Vector3.Lerp(trolleyNearLimit.position, trolleyFarLimit.position, t);

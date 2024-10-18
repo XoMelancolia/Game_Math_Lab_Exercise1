@@ -828,7 +828,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &612065772348433760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2455,7 +2455,7 @@ RectTransform:
   m_Father: {fileID: 5360033284057302129}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2756,8 +2756,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2519141946915151225}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2866,7 +2866,7 @@ Transform:
   m_GameObject: {fileID: 6023892515792707295}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -16, y: 10, z: 0}
+  m_LocalPosition: {x: -16, y: 12.05, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2885,6 +2885,7 @@ GameObject:
   - component: {fileID: 6023892515790766111}
   - component: {fileID: 6023892515792707297}
   - component: {fileID: 6023892515792707298}
+  - component: {fileID: 6023892515792707299}
   m_Layer: 0
   m_Name: Concrete
   m_TagString: Concrete
@@ -2911,7 +2912,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.08
+  m_Radius: 0.2
   m_Center: {x: 0, y: -0.01, z: 0}
 --- !u!114 &6023892515792707298
 MonoBehaviour:
@@ -2926,6 +2927,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 8658184023392300786}
+--- !u!65 &6023892515792707299
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6023892515792707295}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.631242, y: 6.37, z: 7.1142383}
+  m_Center: {x: 0, y: -3.47, z: 0}
 --- !u!224 &6121842926676019246
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3623,8 +3645,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7979931362111318474}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3862,6 +3884,7 @@ GameObject:
   - component: {fileID: 8658184023395725016}
   - component: {fileID: 8658184023394724888}
   - component: {fileID: 8658184023395725017}
+  - component: {fileID: 8658184023395725019}
   m_Layer: 0
   m_Name: Tower Crane
   m_TagString: Untagged
@@ -4228,6 +4251,29 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8658184023392465628}
   m_Mesh: {fileID: 4300008, guid: b75ef94dd86ecb34eb9e252b92b6761c, type: 3}
+--- !u!114 &8658184023395725019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8658184023392465626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 468dfb6269177324b929392388c1639f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crane: {fileID: 8658184023392300794}
+  trolley: {fileID: 8658184023392300784}
+  hook: {fileID: 8658184023392300786}
+  concrete: {fileID: 6023892515792536319}
+  cable: {fileID: 8658184023392300798}
+  nearLimit: {fileID: 601031390}
+  farLimit: {fileID: 363527139}
+  rotationSpeed: 20.57
+  trolleySpeed: 10.04
+  hookSpeed: 1
+  waitTime: 1
 --- !u!33 &8658184023395725020
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4299,6 +4345,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cableSlider: {fileID: 181866909963589405}
+  minCableLength: 0.05
+  maxCableLength: 2.49
 --- !u!1001 &8685051053018706934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4389,7 +4437,7 @@ RectTransform:
   m_Father: {fileID: 9223322846331057059}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
