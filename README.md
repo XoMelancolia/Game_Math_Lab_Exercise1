@@ -9,3 +9,4 @@ When concrete is clicked the sequence:
 
 Know issues:
 The trolley's movement doesn't work properly and isn't constrained to moving on the arm between the movement limits.
+## *The trolleys movement was fixed after the submission of Task 2*
